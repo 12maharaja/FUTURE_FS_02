@@ -1,0 +1,29 @@
+body{
+    margin:0;
+    padding:0;
+    overflow-x: hidden;
+}
+
+
+
+/* Not found */
+.pd-notfound {
+  text-align: center;
+  margin-top: 60px;
+}
+.descript{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 30px;
+}
+
+
+
+/* Responsive */
+@media (max-width: 860px) {
+  .pd-card {
+    grid-template-columns: 1fr;
+  }
+  .pd-image {
+    max-width: 100%;
+  }
+}
