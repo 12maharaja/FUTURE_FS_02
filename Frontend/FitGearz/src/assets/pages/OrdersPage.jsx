@@ -4,7 +4,7 @@ import axios from "axios";
 function OrdersPage() {
   const [orders, setOrders] = useState([]);
 
-  // ✅ Load all orders
+  // LOAD ORDERS
   useEffect(() => {
     fetchOrders();
   }, []);
@@ -18,26 +18,30 @@ function OrdersPage() {
     }
   };
 
-  // ✅ Delete single order
+  // DELETE SINGLE ORDER
   const deleteOrder = async (id) => {
-    if (window.confirm("Are you sure you want to delete this order?")) {
+    if (window.confirm("Delete this order?")) {
       try {
         await axios.delete(`http://localhost:8080/orders/${id}`);
-        alert("🗑 Order deleted!");
-        fetchOrders(); // refresh list
+
+        setOrders(orders.filter((order) => order.id !== id));
+
+        alert("🗑 Order deleted successfully");
       } catch (err) {
         console.error("❌ Error deleting order:", err);
       }
     }
   };
 
-  // ✅ Delete all orders
+  // DELETE ALL ORDERS
   const deleteAllOrders = async () => {
-    if (window.confirm("⚠ This will delete ALL orders. Continue?")) {
+    if (window.confirm("⚠ Delete ALL orders?")) {
       try {
         await axios.delete("http://localhost:8080/orders");
-        alert("🗑 All orders deleted!");
+
         setOrders([]);
+
+        alert("🗑 All orders deleted");
       } catch (err) {
         console.error("❌ Error deleting all orders:", err);
       }
@@ -45,41 +49,84 @@ function OrdersPage() {
   };
 
   return (
-    <div className="orders-page">
-      <h1>📦 Orders Management</h1>
-      <button onClick={deleteAllOrders} className="delete-all-btn">
-        Delete All Orders
-      </button>
+    <div className="orders-container">
+      {/* HEADER */}
+      <div className="orders-header">
+        <div>
+          <h1>📦 Orders Management</h1>
+          <p>Manage customer orders and deliveries</p>
+        </div>
 
+        {orders.length > 0 && (
+          <button onClick={deleteAllOrders} className="delete-all-btn">
+            Delete All
+          </button>
+        )}
+      </div>
+
+      {/* EMPTY STATE */}
       {orders.length === 0 ? (
-        <p>No orders found</p>
+        <div className="empty-orders">
+          <i className="bi bi-bag-x"></i>
+          <h2>No Orders Found</h2>
+          <p>New customer orders will appear here.</p>
+        </div>
       ) : (
-        <table border="1" cellPadding="10" style={{ marginTop: "20px" }}>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Address</th>
-              <th>Payment</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((order) => (
-              <tr key={order.id}>
-                <td>{order.id}</td>
-                <td>{order.name}</td>
-                <td>{order.email}</td>
-                <td>{order.address}</td>
-                <td>{order.payment}</td>
-                <td>
-                  <button onClick={() => deleteOrder(order.id)}>Delete</button>
-                </td>
+        <div className="table-wrapper">
+          <table className="orders-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Payment</th>
+                <th>Status</th>
+                <th>Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {orders.map((order) => (
+                <tr key={order.id}>
+                  <td>#{order.id}</td>
+
+                  <td>
+                    <div className="customer-info">
+                      <div className="customer-avatar">
+                        {order.name?.charAt(0)}
+                      </div>
+
+                      <span>{order.name}</span>
+                    </div>
+                  </td>
+
+                  <td>{order.email}</td>
+
+                  <td className="address-cell">{order.address}</td>
+
+                  <td>
+                    <span className="payment-badge">{order.payment}</span>
+                  </td>
+
+                  <td>
+                    <span className="status-badge">Processing</span>
+                  </td>
+
+                  <td>
+                    <button
+                      className="delete-btn"
+                      onClick={() => deleteOrder(order.id)}
+                    >
+                      <i className="bi bi-trash"></i>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

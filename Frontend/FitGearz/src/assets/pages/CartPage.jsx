@@ -1,26 +1,29 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function CartPage({ cart = [], removeFromCart, updateQuantity }) {
-  const navigate = useNavigate(); // ✅ useNavigate hook initialize
 
-  // 🧮 total amount calculation
+function CartPage({ cart = [], removeFromCart, updateQuantity }) {
+  const navigate = useNavigate();
+
+  // Total calculation
   const total = cart.length
     ? cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
     : 0;
 
   return (
     <div className="cart-container">
+      {/* LEFT SIDE */}
       <div className="cart-items">
         <h2>Cart Items</h2>
 
         {cart.length === 0 ? (
-          <p>
-            Your cart is empty.{" "}
-            <Link to="/" className="text-decoration-none">
-              Go shopping
+          <div className="empty-cart">
+            <p>Your cart is empty</p>
+
+            <Link to="/" className="shop-btn">
+              Go Shopping
             </Link>
-          </p>
+          </div>
         ) : (
           cart.map((item) => (
             <div key={item.id} className="cart-item">
@@ -28,9 +31,10 @@ function CartPage({ cart = [], removeFromCart, updateQuantity }) {
 
               <div className="cart-item-details">
                 <h4>{item.name}</h4>
+
                 <p className="cart-price">₹{item.price}</p>
 
-                {/* Quantity control */}
+                {/* Quantity */}
                 <div className="quantity-control">
                   <button
                     onClick={() =>
@@ -39,7 +43,9 @@ function CartPage({ cart = [], removeFromCart, updateQuantity }) {
                   >
                     -
                   </button>
+
                   <span>{item.quantity}</span>
+
                   <button
                     onClick={() => updateQuantity(item.id, item.quantity + 1)}
                   >
@@ -47,7 +53,7 @@ function CartPage({ cart = [], removeFromCart, updateQuantity }) {
                   </button>
                 </div>
 
-                {/* Remove button */}
+                {/* Remove */}
                 <button
                   className="remove"
                   onClick={() => removeFromCart(item.id)}
@@ -60,11 +66,13 @@ function CartPage({ cart = [], removeFromCart, updateQuantity }) {
         )}
       </div>
 
-      {/* Cart Summary */}
+      {/* RIGHT SIDE */}
       {cart.length > 0 && (
         <div className="cart-summary">
-          <h3>Subtotal ({cart.length} items):</h3>
+          <h3>Subtotal ({cart.length} items)</h3>
+
           <h2>₹{total}</h2>
+
           <button onClick={() => navigate("/checkout")} className="btn">
             Proceed to Checkout
           </button>

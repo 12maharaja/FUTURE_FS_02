@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 
 function SignupPage() {
   const [formData, setFormData] = useState({
@@ -10,9 +11,14 @@ function SignupPage() {
   });
 
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = (e) => {
@@ -24,59 +30,134 @@ function SignupPage() {
     }
 
     setError("");
+
     console.log("✅ Signup success:", formData);
-    // Backend/localStorage save pannalam
+
+    alert("Account Created Successfully 🎉");
   };
 
   return (
     <div className="signup-container">
-      <form className="signup-form" onSubmit={handleSubmit}>
-        <h2>Create Account</h2>
+      <div className="signup-box">
+        {/* LEFT SIDE */}
+        <div className="signup-left">
+          <h1>FitGearz</h1>
 
-        {error && <p className="error">{error}</p>}
+          <p>
+            Join FitGearz today and explore premium fitness, sports, and gym
+            products.
+          </p>
 
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={formData.username}
-          onChange={handleChange}
-          required
-        />
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/942/942748.png"
+            alt="signup"
+          />
+        </div>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
+        {/* RIGHT SIDE */}
+        <form className="signup-form" onSubmit={handleSubmit}>
+          <h2>Create Account</h2>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
+          {error && <p className="error">{error}</p>}
 
-        <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
-          value={formData.confirmPassword}
-          onChange={handleChange}
-          required
-        />
+          {/* USERNAME */}
+          <div className="form-group">
+            <label>Username</label>
 
-        <button type="submit">Sign Up</button>
+            <div className="input-box">
+              <FaUser className="input-icon" />
 
-        <p>
-          Already have an account? <Link to="/login">Login</Link>
-        </p>
-      </form>
+              <input
+                type="text"
+                name="username"
+                placeholder="Enter username"
+                value={formData.username}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+
+          {/* EMAIL */}
+          <div className="form-group">
+            <label>Email</label>
+
+            <div className="input-box">
+              <FaEnvelope className="input-icon" />
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+
+          {/* PASSWORD */}
+          <div className="form-group">
+            <label>Password</label>
+
+            <div className="input-box">
+              <FaLock className="input-icon" />
+
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Enter password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+
+              <span
+                className="password-toggle"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
+          </div>
+
+          {/* CONFIRM PASSWORD */}
+          <div className="form-group">
+            <label>Confirm Password</label>
+
+            <div className="input-box">
+              <FaLock className="input-icon" />
+
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                name="confirmPassword"
+                placeholder="Confirm password"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                required
+              />
+
+              <span
+                className="password-toggle"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
+          </div>
+
+          {/* BUTTON */}
+          <button type="submit" className="signup-btn">
+            Sign Up
+          </button>
+
+          {/* LOGIN */}
+          <p className="login-link">
+            Already have an account?
+            <Link to="/login"> Login</Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }

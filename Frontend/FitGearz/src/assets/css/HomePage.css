@@ -1,0 +1,49 @@
+/* PRODUCTS TITLE */
+
+.products-title-wrapper {
+  text-align: center;
+  margin: 2.5rem 0 1.5rem 0;
+}
+
+.cate {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #222;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+/* Underline Effect */
+.cate::after {
+  content: "";
+  width: 60%;
+  height: 4px;
+  background: #ff9800;
+  position: absolute;
+  left: 20%;
+  bottom: 0;
+  border-radius: 10px;
+}
+
+/* MOBILE */
+@media screen and (max-width: 768px) {
+  .cate {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .products-title-wrapper {
+    margin: 2rem 0 1rem 0;
+  }
+
+  .cate {
+    font-size: 1.5rem;
+  }
+
+  .cate::after {
+    height: 3px;
+  }
+}

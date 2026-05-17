@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-
 function Navbar() {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
@@ -25,21 +24,24 @@ function Navbar() {
   ];
 
   const filteredProducts = products.filter((item) =>
-    item.name.toLowerCase().includes(query.toLowerCase())
+    item.name.toLowerCase().includes(query.toLowerCase()),
   );
 
   const handleSelect = (id) => {
     setQuery("");
-    navigate(`/product/${id}`); 
+    navigate(`/product/${id}`);
   };
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
+          {/* LOGO */}
           <Link className="navbar-brand" to="/">
             FitGearz
           </Link>
+
+          {/* TOGGLER */}
           <button
             className="navbar-toggler"
             type="button"
@@ -52,16 +54,17 @@ function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-      
+          {/* SEARCH */}
           <div className="search-container">
             <input
               className="form-control search-input"
               type="search"
-              placeholder="Search FitGearz.in "
+              placeholder="Search products on FitGearz..."
               aria-label="Search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
+
             {query && (
               <ul className="search-results">
                 {filteredProducts.length > 0 ? (
@@ -71,60 +74,113 @@ function Navbar() {
                       className="search-item"
                       onClick={() => handleSelect(item.id)}
                     >
+                      <i className="bi bi-search"></i>
                       {item.name}
                     </li>
                   ))
                 ) : (
-                  <li className="search-no-results">No results</li>
+                  <li className="search-no-results">No products found</li>
                 )}
               </ul>
             )}
           </div>
 
-        
+          {/* RIGHT NAV */}
           <div className="collapse navbar-collapse" id="navbarScroll">
-            <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
+            <ul className="navbar-nav ms-auto">
+              {/* WISHLIST */}
               <li className="nav-item">
-                <Link className="nav-link active" to="/wish">
-                  <i className="bi bi-heart fs-5"></i>
+                <Link className="nav-link icon-link" to="/wish">
+                  <i className="bi bi-heart"></i>
+                  <span>Wishlist</span>
                 </Link>
               </li>
 
+              {/* CART */}
               <li className="nav-item">
-                <Link className="nav-link" to="/cart">
-                  <i className="bi bi-cart4 fs-5"> Cart</i>
+                <Link className="nav-link icon-link" to="/cart">
+                  <i className="bi bi-cart3"></i>
+                  <span>Cart</span>
                 </Link>
               </li>
 
+              {/* PROFILE DROPDOWN */}
               <li className="nav-item dropdown">
                 <Link
-                  className="nav-link dropdown-toggle"
+                  className="nav-link profile-dropdown dropdown-toggle"
                   to="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <i className="bi bi-person-circle m-2 fs-5"></i>
-                  Login
+                  <div className="profile-icon-wrapper">
+                    <i className="bi bi-person-circle"></i>
+                  </div>
+
+                  <span className="profile-text">Account</span>
                 </Link>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link className="dropdown-item" to="/signup">
-                      Sign up
-                    </Link>
+
+                <ul className="dropdown-menu dropdown-menu-end profile-menu">
+                  <li className="profile-header">
+                    <h6>Hello, User 👋</h6>
+                    <p>Welcome to FitGearz</p>
                   </li>
-                  <li>
-                    <Link className="dropdown-item" to="/login">
-                      Sign in
-                    </Link>
-                  </li>
+
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
+
+                  <li>
+                    <Link className="dropdown-item" to="/profile">
+                      <i className="bi bi-person"></i>
+                      My Profile
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link className="dropdown-item" to="/orders">
+                      <i className="bi bi-bag"></i>
+                      My Orders
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link className="dropdown-item" to="/wishlist">
+                      <i className="bi bi-heart"></i>
+                      Wishlist
+                    </Link>
+                  </li>
+
                   <li>
                     <Link className="dropdown-item" to="/contact">
+                      <i className="bi bi-headset"></i>
                       Contact Us
                     </Link>
+                  </li>
+
+                  <li>
+                    <hr className="dropdown-divider" />
+                  </li>
+
+                  <li>
+                    <Link className="dropdown-item" to="/login">
+                      <i className="bi bi-box-arrow-in-right"></i>
+                      Login
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link className="dropdown-item" to="/signup">
+                      <i className="bi bi-person-plus"></i>
+                      Sign Up
+                    </Link>
+                  </li>
+
+                  <li>
+                    <button className="dropdown-item logout-btn">
+                      <i className="bi bi-box-arrow-right"></i>
+                      Logout
+                    </button>
                   </li>
                 </ul>
               </li>

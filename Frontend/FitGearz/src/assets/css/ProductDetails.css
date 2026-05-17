@@ -1,0 +1,230 @@
+/* =========================
+   PRODUCT DETAILS PAGE
+========================= */
+
+.pd-wrapper {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.pd-card {
+  width: 100%;
+  max-width: 1200px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  gap: 40px;
+  padding: 35px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.pd-image-wrap {
+  flex: 1;
+  background: #f8f8f8;
+  border-radius: 18px;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pd-image {
+  width: 100%;
+  max-width: 420px;
+  height: 420px;
+  object-fit: contain;
+  transition: 0.3s ease;
+}
+
+.pd-image:hover {
+  transform: scale(1.04);
+}
+
+/* =========================
+   INFO
+========================= */
+
+.pd-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* TITLE */
+
+.pd-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 16px;
+}
+
+/* DESCRIPTION */
+
+.descript {
+  font-size: 1.05rem;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+/* PRICE */
+
+.pd-price-row {
+  margin-bottom: 30px;
+}
+
+.pd-price {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #e63946;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.button-group .btn {
+  padding: 14px 28px;
+  font-size: 1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: 0.3s;
+  min-width: 180px;
+}
+
+/* ADD TO CART */
+
+.btn-outline-warning {
+  border: 2px solid #ff9800 !important;
+  color: #ff9800 !important;
+  background: transparent !important;
+}
+
+.btn-outline-warning:hover {
+  background: #ff9800 !important;
+  color: white !important;
+  transform: translateY(-2px);
+}
+
+/* BUY NOW */
+
+.btn-warning {
+  background: linear-gradient(90deg, #ff6b00, #ff9800) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.btn-warning:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #e45f00, #e68900) !important;
+}
+
+/* =========================
+   NOT FOUND
+========================= */
+
+.pd-notfound {
+  text-align: center;
+  margin-top: 100px;
+  font-size: 2rem;
+  color: red;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media screen and (max-width: 768px) {
+  .pd-card {
+    flex-direction: column;
+    padding: 25px;
+    gap: 25px;
+  }
+
+  .pd-image {
+    height: 320px;
+  }
+
+  .pd-title {
+    font-size: 2rem;
+  }
+
+  .pd-price {
+    font-size: 1.8rem;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width: 480px) {
+  .pd-wrapper {
+    padding: 15px;
+  }
+
+  .pd-card {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .pd-image-wrap {
+    padding: 15px;
+  }
+
+  .pd-image {
+    height: 250px;
+  }
+
+  .pd-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .descript {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+
+  .pd-price {
+    font-size: 1.6rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .button-group .btn {
+    width: 100%;
+    min-width: unset;
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .pd-notfound {
+    font-size: 1.5rem;
+  }
+}

@@ -1,8 +1,8 @@
 /* =========================
-   LOGIN PAGE
+   SIGNUP PAGE
 ========================= */
 
-.login-container {
+.signup-container {
   min-height: 100vh;
   background: linear-gradient(135deg, #ff7b00, #ff9800);
   display: flex;
@@ -12,12 +12,12 @@
 }
 
 /* =========================
-   LOGIN BOX
+   BOX
 ========================= */
 
-.login-box {
+.signup-box {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1050px;
   background: white;
   border-radius: 22px;
   overflow: hidden;
@@ -29,7 +29,7 @@
    LEFT SIDE
 ========================= */
 
-.login-left {
+.signup-left {
   width: 45%;
   background: linear-gradient(180deg, #ff7b00, #ff9800);
   color: white;
@@ -39,19 +39,19 @@
   justify-content: center;
 }
 
-.login-left h1 {
+.signup-left h1 {
   font-size: 3rem;
-  margin-bottom: 20px;
   font-weight: 800;
+  margin-bottom: 20px;
 }
 
-.login-left p {
-  font-size: 1rem;
+.signup-left p {
   line-height: 1.8;
+  font-size: 1rem;
   margin-bottom: 30px;
 }
 
-.login-left img {
+.signup-left img {
   width: 100%;
   max-width: 250px;
   align-self: center;
@@ -61,7 +61,7 @@
    FORM
 ========================= */
 
-.login-form {
+.signup-form {
   flex: 1;
   padding: 50px 40px;
   display: flex;
@@ -69,10 +69,24 @@
   justify-content: center;
 }
 
-.login-form h2 {
+.signup-form h2 {
   font-size: 2.2rem;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   color: #222;
+}
+
+/* =========================
+   ERROR
+========================= */
+
+.error {
+  background: #ffe5e5;
+  color: #e63946;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 /* =========================
@@ -87,7 +101,6 @@
   display: block;
   margin-bottom: 8px;
   color: #555;
-  font-size: 15px;
   font-weight: 600;
 }
 
@@ -113,8 +126,8 @@
   border: 1px solid #ddd;
   background: #fafafa;
   outline: none;
-  font-size: 15px;
   transition: 0.3s;
+  font-size: 15px;
 }
 
 .input-box input:focus {
@@ -133,35 +146,10 @@
 }
 
 /* =========================
-   OPTIONS
-========================= */
-
-.login-options {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 22px;
-  font-size: 14px;
-  color: #555;
-}
-
-.login-options label {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.forgot-password {
-  color: #ff7b00;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-/* =========================
    BUTTON
 ========================= */
 
-.login-btn {
+.signup-btn {
   width: 100%;
   padding: 14px;
   border: none;
@@ -174,29 +162,29 @@
   transition: 0.3s;
 }
 
-.login-btn:hover {
+.signup-btn:hover {
   transform: translateY(-2px);
-  background: linear-gradient(90deg, #e66a00, #e68a00);
+  background: linear-gradient(90deg, #e66a00, #e68900);
 }
 
 /* =========================
-   SIGNUP
+   LOGIN LINK
 ========================= */
 
-.signup-link {
+.login-link {
   text-align: center;
   margin-top: 22px;
   color: #666;
   font-size: 15px;
 }
 
-.signup-link a {
+.login-link a {
   color: #ff7b00;
   text-decoration: none;
   font-weight: 700;
 }
 
-.signup-link a:hover {
+.login-link a:hover {
   text-decoration: underline;
 }
 
@@ -205,17 +193,17 @@
 ========================= */
 
 @media screen and (max-width: 768px) {
-  .login-box {
+  .signup-box {
     flex-direction: column;
   }
 
-  .login-left {
+  .signup-left {
     width: 100%;
     text-align: center;
     padding: 35px 20px;
   }
 
-  .login-form {
+  .signup-form {
     padding: 35px 25px;
   }
 }
@@ -225,31 +213,31 @@
 ========================= */
 
 @media screen and (max-width: 480px) {
-  .login-container {
+  .signup-container {
     padding: 15px;
   }
 
-  .login-box {
+  .signup-box {
     border-radius: 16px;
   }
 
-  .login-left h1 {
+  .signup-left h1 {
     font-size: 2rem;
   }
 
-  .login-left p {
+  .signup-left p {
     font-size: 14px;
   }
 
-  .login-left img {
+  .signup-left img {
     max-width: 180px;
   }
 
-  .login-form {
+  .signup-form {
     padding: 25px 18px;
   }
 
-  .login-form h2 {
+  .signup-form h2 {
     font-size: 1.7rem;
     margin-bottom: 20px;
   }
@@ -259,18 +247,12 @@
     font-size: 14px;
   }
 
-  .login-options {
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-  }
-
-  .login-btn {
+  .signup-btn {
     padding: 12px;
     font-size: 15px;
   }
 
-  .signup-link {
+  .login-link {
     font-size: 14px;
   }
 }

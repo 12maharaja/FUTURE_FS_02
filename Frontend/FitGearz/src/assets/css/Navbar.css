@@ -1,166 +1,265 @@
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  padding: 14px 24px;
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.navbar-brand {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #ff7b00 !important;
+  letter-spacing: 1px;
+}
+
+.navbar-brand:hover {
+  color: #e56f00 !important;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
 .search-container {
   position: relative;
-  flex-grow: 1;         
-  margin: 0 20px;        
+  flex-grow: 1;
+  max-width: 650px;
+  margin: 0 25px;
 }
 
 .search-input {
   width: 100%;
-  padding: 8px 12px;
-  font-size: 16px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+  padding: 0 16px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.search-input:focus {
+  border-color: #ff9800;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(255, 152, 0, 0.12);
 }
 
 .search-results {
   position: absolute;
-  top: 40px;
+  top: 55px;
   left: 0;
   right: 0;
   background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  max-height: 200px;
-  overflow-y: auto;
+  border-radius: 12px;
+  padding: 8px;
   list-style: none;
-  padding: 5px;
-  margin: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  max-height: 280px;
+  overflow-y: auto;
   z-index: 1000;
 }
 
 .search-item {
-  padding: 8px;
+  padding: 12px;
+  border-radius: 8px;
   cursor: pointer;
-  border-bottom: 1px solid #eee;
+  transition: 0.2s;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 500;
 }
 
 .search-item:hover {
-  background: #f5f5f5;
+  background: #fff3e0;
+  color: #ff7b00;
 }
 
 .search-no-results {
-  padding: 8px;
-  color: #999;
-}
-
-.btn{
-    background: linear-gradient(90deg,red,orange);
-    color: #fff;
-
-}
-.btn:hover{
-    background:linear-gradient(90deg,rgb(201, 5, 5),rgb(201, 133, 6));
-}
-.signup-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
-  background: #f5f5f5;
-}
-
-.signup-form {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  width: 350px;
   text-align: center;
+  padding: 12px;
+  color: #888;
 }
 
-.signup-form h2 {
-  margin-bottom: 20px;
-  color: #333;
+/* =========================
+   NAV LINKS
+========================= */
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.signup-form input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+.icon-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #333 !important;
+  font-weight: 600;
+  padding: 10px 14px !important;
+  border-radius: 10px;
+  transition: 0.3s;
 }
 
-.signup-form button {
-  width: 100%;
-  padding: 10px;
-  background: #0077ff;
+.icon-link:hover {
+  background: #fff3e0;
+  color: #ff7b00 !important;
+}
+
+.icon-link i {
+  font-size: 1.2rem;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333 !important;
+  font-weight: 600;
+}
+
+.profile-icon-wrapper {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #ff7b00, #ff9800);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
+  font-size: 18px;
+}
+
+.profile-menu {
+  width: 260px;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 10px;
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+}
+
+.profile-header {
+  padding: 10px;
+}
+
+.profile-header h6 {
+  margin: 0;
   font-size: 16px;
+  font-weight: 700;
 }
 
-.signup-form button:hover {
-  background: #005fcc;
+.profile-header p {
+  margin: 4px 0 0;
+  color: #777;
+  font-size: 13px;
 }
 
-.signup-form p {
-  margin-top: 15px;
-  font-size: 14px;
+/* =========================
+   DROPDOWN ITEMS
+========================= */
+
+.dropdown-item {
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.2s;
+  font-weight: 500;
 }
 
-.signup-form a {
-  color: #0077ff;
-  text-decoration: none;
+.dropdown-item:hover {
+  background: #fff3e0;
+  color: #ff7b00;
 }
 
-.signup-form a:hover {
-  text-decoration: underline;
-}
-
-.error {
-  color: red;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-@media screen and (max-width: 400px){
-  .search-container {
-  position: relative;
-  flex-grow: 1;          
-  margin: 0 20px;        
-}
-.navbar-brand{
+.dropdown-item i {
   font-size: 15px;
 }
 
+/* LOGOUT */
 
-.search-input {
+.logout-btn {
+  border: none;
+  background: transparent;
   width: 100%;
-  font-size: 12px;
+  text-align: left;
+  color: #e63946;
+  border-radius: 10px;
+  padding: 12px;
+  font-weight: 600;
 }
 
-
-.search-results {
-  position: absolute;
-  top: 40px;
-  left: 0;
-  right: 0;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  max-height: 200px;
-  overflow-y: auto;
-  list-style: none;
-  padding: 5px;
-  margin: 0;
-  z-index: 1000;
+.logout-btn:hover {
+  background: #ffe5e5;
 }
 
+/* =========================
+   MOBILE
+========================= */
 
-.search-item {
-  padding: 8px;
-  cursor: pointer;
-  border-bottom: 1px solid #eee;
+@media screen and (max-width: 768px) {
+
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .search-container {
+    margin: 15px 0;
+    max-width: 100%;
+  }
+
+  .navbar-nav {
+    margin-top: 15px;
+    gap: 8px;
+  }
+
+  .icon-link {
+    padding: 10px !important;
+  }
+
+  .profile-menu {
+    width: 100%;
+  }
 }
 
-.search-item:hover {
-  background: #f5f5f5;
-}
+/* SMALL MOBILE */
 
+@media screen and (max-width: 480px) {
 
-.search-no-results {
-  padding: 8px;
-  color: #999;
-}
+  .navbar-brand {
+    font-size: 1.4rem;
+  }
+
+  .search-input {
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .search-results {
+    top: 48px;
+  }
+
+  .profile-text {
+    display: none;
+  }
+
+  .icon-link span {
+    display: none;
+  }
 }
