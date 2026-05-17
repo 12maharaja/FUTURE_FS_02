@@ -15,7 +15,9 @@ import "./assets/css/HomePage.css";
 import "./assets/css/ProductDetails.css";
 import "./assets/css/ProfilePage.css";
 import "./assets/css/SignupPage.css";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import HomePage from "./assets/pages/HomePage.jsx";
 import ProductDetailsPage from "./assets/pages/ProductDetailsPage.jsx";
 import CartPage from "./assets/pages/CartPage.jsx";
@@ -23,7 +25,6 @@ import LoginPage from "./assets/pages/LoginPage.jsx";
 import SignupPage from "./assets/pages/SignupPage.jsx";
 import CheckoutPage from "./assets/pages/CheckoutPage.jsx";
 
-// App wrapper with Cart state
 function App() {
   const [cart, setCart] = useState([]);
 
@@ -34,7 +35,7 @@ function App() {
         return prevCart.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
-            : item
+            : item,
         );
       }
       return [...prevCart, { ...product, quantity: 1 }];
@@ -48,52 +49,47 @@ function App() {
   const updateQuantity = (id, quantity) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
-        item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item
-      )
+        item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item,
+      ),
     );
   };
 
-  const router = createBrowserRouter(
-    [
-      {
-        path: "/*",
-        element: <HomePage addToCart={addToCart} cartCount={cart.length} />,
-      },
-      {
-        path: "/product/:id",
-        element: <ProductDetailsPage addToCart={addToCart} />,
-      },
-      {
-        path: "/login",
-        element: <LoginPage />,
-      },
-      {
-        path: "/signup",
-        element: <SignupPage />,
-      },
-      {
-        path: "/checkout",
-        element: <CheckoutPage cart={cart} />,
-      },
-      {
-        path: "/cart",
-        element: (
-          <CartPage
-            cart={cart}
-            removeFromCart={removeFromCart}
-            updateQuantity={updateQuantity}
-          />
-        ),
-      },
-      {
-        path: "*", // catch-all (if URL not found → HomePage)
-        element: <HomePage addToCart={addToCart} cartCount={cart.length} />,
-      },
-    ],
+  const router = createBrowserRouter([
     {
-      basename: "/FitGearz", // important for GitHub Pages
-    }
-  );
+      path: "/",
+      element: <HomePage addToCart={addToCart} cartCount={cart.length} />,
+    },
+    {
+      path: "/product/:id",
+      element: <ProductDetailsPage addToCart={addToCart} />,
+    },
+    {
+      path: "/login",
+      element: <LoginPage />,
+    },
+    {
+      path: "/signup",
+      element: <SignupPage />,
+    },
+    {
+      path: "/checkout",
+      element: <CheckoutPage cart={cart} />,
+    },
+    {
+      path: "/cart",
+      element: (
+        <CartPage
+          cart={cart}
+          removeFromCart={removeFromCart}
+          updateQuantity={updateQuantity}
+        />
+      ),
+    },
+    {
+      path: "*",
+      element: <HomePage addToCart={addToCart} cartCount={cart.length} />,
+    },
+  ]);
 
   return <RouterProvider router={router} />;
 }
@@ -101,5 +97,5 @@ function App() {
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <App />
-  </StrictMode>
+  </StrictMode>,
 );
