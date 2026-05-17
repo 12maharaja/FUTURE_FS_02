@@ -4,7 +4,7 @@ import jersey from "../images/jersey.jpeg";
 import boot from "../images/boot.jpeg";
 import bat from "../images/tbat.jpeg";
 import vball from "../images/vball.jpeg";
-import chelmet from "../images/chelmat.jpg";
+import chelmet from "../images/chelmat.webp";
 import dumble20 from "../images/dumble20.jpeg";
 import barble from "../images/barble.jpeg";
 import treadmill from "../images/treadmill.jpeg";

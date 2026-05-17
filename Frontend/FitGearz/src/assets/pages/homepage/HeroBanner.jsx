@@ -2,10 +2,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import banner1 from "../../images/Banner 1.png";
-import banner2 from "../../images/Banner 2.png";
-import banner3 from "../../images/Banner 3.png";
-import banner4 from "../../images/Banner 4.png";
+import banner1 from "../../images/Banner 1.webp";
+import banner2 from "../../images/Banner 2.webp";
+import banner3 from "../../images/Banner 3.webp";
+import banner4 from "../../images/Banner 4.webp";
 
 
 
